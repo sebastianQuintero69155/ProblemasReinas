@@ -17,6 +17,7 @@ public class JuegoAjedrez {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Parte en la cual se le solicita la entrada al usuario donde quiere ingresar la primer reina se hace por consola.
         Scanner sc = new Scanner(System.in);
         System.out.println("Favor ingrese la pisicion en la fila de la primera reina");
         int fila = sc.nextInt();
@@ -25,6 +26,7 @@ public class JuegoAjedrez {
         
        Juego ficha=new Juego();
        ficha.llenarTablero(fila, columna);
+       //--------------------------------------------------------------------------------------------
         
     }
 
