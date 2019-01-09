@@ -24,29 +24,65 @@ public class Juego {
         }
         llenarReinas(fila, columna);
     }
-    //llenar reinas aleatoriamente mediante el randon que nos genera la posicion
+    //llenar reinas aleatoriamente mediante el random que nos genera la posicion y limpieza del tablero
 
     public int[][] llenarReinas(int fil, int colum) {
-        configuracionTablero(fil, colum);
+        int cont = 0; //contador para saber el total de casillas ocupadas
+        int reinas = 0; //contamos cauntas reinas hay
+        configuracionTablero(fil, colum);//ingresar la primera reina
         Random r = new Random();
-        for (int i = 0; i < 7; i++) {
-            int fila = r.nextInt(8);
-            int columna = r.nextInt(8);
-            boolean disponible = disponible(fila, columna);
-            if (disponible == true) {
-                configuracionTablero(fila, columna);
-            } else {
-                i--;
-            }
+        int oportu = 800;
+        for (int s = 0; s < oportu;) {
+            for (int i = 0; i < 7; i++) {
+                //forma para limpiar el tablero cuando la posible respuesta no funciono
+                reinas = 0;
+                cont = 0;
+                for (int j = 0; j < tablero.length; j++) {
+                    for (int k = 0; k < tablero.length; k++) {
 
+                        if (tablero[j][k] != 0) {
+                            cont++;
+
+                        }
+                        if (tablero[j][k] == 8) {
+                            reinas++;
+                        }
+                    }
+                }
+                if (cont >= 64 && reinas < 8) {
+                    for (int k = 0; k < tablero.length; k++) {
+                        for (int l = 0; l < tablero.length; l++) {
+                            tablero[k][l] = 0;
+                        }
+                    }
+                    s++;
+                    configuracionTablero(fil, colum);//despues de limpiar el tablero ingresamos la primer reina
+                    //---------------------------------------------------
+                }
+                if (reinas == 8) {
+                    s = oportu;
+                    break;
+
+                } else {
+
+                    int fila = r.nextInt(8);
+                    int columna = r.nextInt(8);
+                    boolean disponible = disponible(fila, columna);
+                    if (disponible == true) {
+                        configuracionTablero(fila, columna);
+                    } else {
+                        i--;
+                    }
+                }
+
+            }
         }
         int respu[][] = resultado();
         return respu;
     }
     //---------------------------------------------------
-    
-    //Verificamos la disponibilidad de la coordenada en el tablero de ajedrez
 
+    //Verificamos la disponibilidad de la coordenada en el tablero de ajedrez
     public boolean disponible(int fila, int columna) {
         if (tablero[fila][columna] == 0) {
             return true;
@@ -54,9 +90,8 @@ public class Juego {
         return false;
     }
     //-------------------------------------------------------------------------
-    
-    //Metodo para condicionar las casillas en las cuales no se pueden ingresar nuevas reinas
 
+    //Metodo para condicionar las casillas en las cuales no se pueden ingresar nuevas reinas
     public void configuracionTablero(int fila, int columna) {
         int posFila = fila;
         int posColu = columna;

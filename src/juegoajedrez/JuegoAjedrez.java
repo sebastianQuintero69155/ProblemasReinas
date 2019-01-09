@@ -19,15 +19,32 @@ public class JuegoAjedrez {
     public static void main(String[] args) {
         //Parte en la cual se le solicita la entrada al usuario donde quiere ingresar la primer reina se hace por consola.
         Scanner sc = new Scanner(System.in);
-        System.out.println("Favor ingrese la pisicion en la fila de la primera reina");
-        int fila = sc.nextInt();
-        System.out.println("Favor ingrese la pisicion en la columna de la primera reina");
-        int columna = sc.nextInt();
-        
-       Juego ficha=new Juego();
-       ficha.llenarTablero(fila, columna);
-       //--------------------------------------------------------------------------------------------
-        
+        int fila = 0;
+        int columna = 0;
+        while (true) {
+            System.out.println("Favor ingrese la pisicion en la fila de la primera reina de 0-7");
+            int fil = sc.nextInt();
+            if (fil >= 0 && fil < 8) {
+                fila = fil;
+                break;
+            }
+            System.out.println("Dato erroneo");
+        }
+
+        while (true) {
+            System.out.println("Favor ingrese la pisicion en la columna de la primera reina 0-7");
+            int colum = sc.nextInt();
+            if (colum >= 0 && colum < 8) {
+                columna = colum;
+                break;
+            }
+            System.out.println("Dato erroneo");
+        }
+
+        Juego ficha = new Juego();
+        ficha.llenarTablero(fila, columna);
+        //--------------------------------------------------------------------------------------------
+
     }
 
 }
