@@ -26,7 +26,7 @@ public class Juego {
     }
     //llenar reinas aleatoriamente mediante el random que nos genera la posicion y limpieza del tablero
 
-    public int[][] llenarReinas(int fil, int colum) {
+    public void llenarReinas(int fil, int colum) {
         int cont = 0; //contador para saber el total de casillas ocupadas
         int reinas = 0; //contamos cauntas reinas hay
         configuracionTablero(fil, colum);//ingresar la primera reina
@@ -77,8 +77,7 @@ public class Juego {
 
             }
         }
-        int respu[][] = resultado();
-        return respu;
+        resultado();
     }
     //---------------------------------------------------
 
@@ -168,8 +167,8 @@ public class Juego {
     //------------------------------------------------------------------
 
     //Metodo para mostrar las posiciones de las reinas dentro del tablero de ajedrez
-    public int[][] resultado() {
-        int[][] resu = new int[8][2];
+    public void resultado() {
+//        int[][] resu = new int[8][2];
 
         for (int x = 0; x < tablero.length; x++) {
             for (int y = 0; y < tablero.length; y++) {
@@ -179,7 +178,7 @@ public class Juego {
             }
 
         }
-        return resu;
+//        return resu;
     }
     //-------------------------------------------------------------------------------
 
