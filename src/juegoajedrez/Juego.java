@@ -29,7 +29,7 @@ public class Juego {
     public void llenarReinas(int fil, int colum) {
         int cont = 0; //contador para saber el total de casillas ocupadas
         int reinas = 0; //contamos cauntas reinas hay
-        configuracionTablero(fil, colum);//ingresar la primera reina
+        configurarTablero(fil, colum);//ingresar la primera reina
         Random r = new Random();
         int oportu = 800;
         for (int s = 0; s < oportu;) {
@@ -56,7 +56,7 @@ public class Juego {
                         }
                     }
                     s++;
-                    configuracionTablero(fil, colum);//despues de limpiar el tablero ingresamos la primer reina
+                    configurarTablero(fil, colum);//despues de limpiar el tablero ingresamos la primer reina
                     //---------------------------------------------------
                 }
                 if (reinas == 8) {
@@ -67,9 +67,9 @@ public class Juego {
 
                     int fila = r.nextInt(8);
                     int columna = r.nextInt(8);
-                    boolean disponible = disponible(fila, columna);
+                    boolean disponible = validarDisponibilidad(fila, columna);
                     if (disponible == true) {
-                        configuracionTablero(fila, columna);
+                        configurarTablero(fila, columna);
                     } else {
                         i--;
                     }
@@ -77,12 +77,12 @@ public class Juego {
 
             }
         }
-        resultado();
+        imprimirResultado();
     }
     //---------------------------------------------------
 
     //Verificamos la disponibilidad de la coordenada en el tablero de ajedrez
-    public boolean disponible(int fila, int columna) {
+    public boolean validarDisponibilidad(int fila, int columna) {
         if (tablero[fila][columna] == 0) {
             return true;
         }
@@ -91,7 +91,7 @@ public class Juego {
     //-------------------------------------------------------------------------
 
     //Metodo para condicionar las casillas en las cuales no se pueden ingresar nuevas reinas
-    public void configuracionTablero(int fila, int columna) {
+    public void configurarTablero(int fila, int columna) {
         int posFila = fila;
         int posColu = columna;
         int i = 0;
@@ -167,7 +167,7 @@ public class Juego {
     //------------------------------------------------------------------
 
     //Metodo para mostrar las posiciones de las reinas dentro del tablero de ajedrez
-    public void resultado() {
+    public void imprimirResultado() {
 //        int[][] resu = new int[8][2];
 
         for (int x = 0; x < tablero.length; x++) {
