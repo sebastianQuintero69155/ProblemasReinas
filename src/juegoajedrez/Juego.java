@@ -168,17 +168,18 @@ public class Juego {
 
     //Metodo para mostrar las posiciones de las reinas dentro del tablero de ajedrez
     public void imprimirResultado() {
-//        int[][] resu = new int[8][2];
 
         for (int x = 0; x < tablero.length; x++) {
-            for (int y = 0; y < tablero.length; y++) {
-                if (tablero[x][y] == 8) {
-                    System.out.println("La posicion de las reinas es en\n " + "fila:" + x + " Columna" + y + "\n");
+            System.out.print("|");
+            for (int y = 0; y < tablero[x].length; y++) {
+                System.out.print(tablero[x][y]);
+                if (y != tablero[x].length - 1) {
+                    System.out.print("\t");
                 }
             }
-
+            System.out.println("|");
         }
-//        return resu;
+
     }
     //-------------------------------------------------------------------------------
 
